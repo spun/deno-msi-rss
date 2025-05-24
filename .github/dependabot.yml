@@ -10,3 +10,9 @@ updates:
     directory: "/"
     schedule:
       interval: "weekly"
+
+  # Enable version updates for our devcontainer Dockerfile
+  - package-ecosystem: "docker"
+    directory: "/.devcontainer"
+    schedule:
+      interval: "weekly"
