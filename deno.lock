@@ -1,16 +1,16 @@
 {
-  "version": "4",
+  "version": "5",
   "specifiers": {
-    "jsr:@libs/xml@^6.0.4": "6.0.4"
+    "jsr:@libs/xml@7": "7.0.0"
   },
   "jsr": {
-    "@libs/xml@6.0.4": {
-      "integrity": "c896f17016dbf5f2d62496e0bd6cd7db145c05987d0e45d4dd2c87785a60f528"
+    "@libs/xml@7.0.0": {
+      "integrity": "4fe581ec16d4a58fdc085c89f721e024f06afe7303d62ed4c24c12b6dec98ece"
     }
   },
   "workspace": {
     "dependencies": [
-      "jsr:@libs/xml@^6.0.4",
+      "jsr:@libs/xml@7",
       "jsr:@std/assert@^1.0.13"
     ]
   }
