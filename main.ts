@@ -86,7 +86,7 @@ async function generateFeedForProduct(product: Product) {
                 generateReleaseFooter(product.bios_page, release.download_url),
             ),
             pubDate: new Date(release.download_release).toUTCString(),
-            link: release.download_url,
+            link: product.bios_page,
           })),
         },
       },
