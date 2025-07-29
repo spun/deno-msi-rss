@@ -1,4 +1,4 @@
-import { stringify, type xml_document } from "@libs/xml";
+import { cdata, stringify, type xml_document } from "@libs/xml";
 import { Product, products } from "./products.ts";
 
 const FEEDS_FOLDER = "public/feeds/";
@@ -53,6 +53,18 @@ async function generateFeedForProduct(product: Product) {
     throw Error("No releases were found");
   }
 
+  function generateReleaseFooter(
+    productPage: string,
+    releasePage: string,
+  ): string {
+    return `
+      <br><hr>
+      <a href="${productPage}">Go to downloads page</a> | 
+      <a href="${releasePage}">Get this version</a>
+      <br><br>
+    `;
+  }
+
   // Generate xml text
   const xml = stringify(
     {
@@ -69,9 +81,12 @@ async function generateFeedForProduct(product: Product) {
             guid: release.download_url,
             title:
               `(${release.download_release}) - ${release.download_version}`,
-            description: release.download_description,
+            description: cdata(
+              release.download_description +
+                generateReleaseFooter(product.bios_page, release.download_url),
+            ),
             pubDate: new Date(release.download_release).toUTCString(),
-            link: release.download_url,
+            link: `${product.bios_page}:~:text=${release.download_version}`,
           })),
         },
       },
