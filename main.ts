@@ -80,7 +80,7 @@ async function generateFeedForProduct(product: Product) {
           item: biosReleases.map((release) => ({
             guid: release.download_url,
             title:
-              `(${release.download_release}) - ${release.download_version}`,
+              `${release.download_version} - (${release.download_release})`,
             description: cdata(
               release.download_description +
                 generateReleaseFooter(product.bios_page, release.download_url),
