@@ -89,7 +89,9 @@ async function generateFeedForProduct(product: Product) {
                 generateReleaseFooter(product.bios_page, release.download_url),
             ),
             pubDate: new Date(release.download_release).toUTCString(),
-            link: `${product.bios_page}:~:text=${release.download_version}`,
+            link: `${product.bios_page}:~:text=${
+              encodeURI(release.download_version)
+            }`,
           })),
         },
       },
