@@ -58,10 +58,10 @@ async function generateFeedForProduct(product: Product) {
     releasePage: string,
   ): string {
     return `
-      <br><hr>
+      <br/><hr/>
       <a href="${productPage}">Go to downloads page</a> | 
       <a href="${releasePage}">Get this version</a>
-      <br><br>
+      <br/><br/>
     `;
   }
 
@@ -82,7 +82,10 @@ async function generateFeedForProduct(product: Product) {
             title:
               `${release.download_version} - (${release.download_release})`,
             description: cdata(
-              release.download_description +
+              // Insert HTML <br/> tag for every newline character so that line breaks are
+              // preserved in RSS readers.
+              // NOTE: We are also keeping the original newlines for readability in the XML.
+              release.download_description.replaceAll("\n", "<br/>\n") +
                 generateReleaseFooter(product.bios_page, release.download_url),
             ),
             pubDate: new Date(release.download_release).toUTCString(),
