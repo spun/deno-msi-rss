@@ -29,19 +29,7 @@ async function generateFeedForProduct(product: Product) {
   // Fetch JSON with data
   const api_url =
     `https://www.msi.com/api/v1/product/support/panel?product=${product.link_id}&type=bios`;
-  const response = await fetch(api_url, {
-    "headers": {
-      "accept-language": "en-US,en;q=0.9",
-      "priority": "u=0, i",
-      "sec-ch-ua":
-        '"Not A(Brand";v="8", "Chromium";v="138", "Google Chrome";v="138"',
-      "sec-ch-ua-mobile": "?0",
-      "sec-ch-ua-platform": '"Windows"',
-      "user-agent":
-        "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/138.0.0.0 Safari/537.36",
-    },
-    "method": "GET",
-  });
+  const response = await fetch(api_url, { "method": "GET" });
 
   // Parse to JSON
   const responseJson: ApiResponse = await response.json();
