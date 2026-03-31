@@ -1,3 +1,3 @@
-FROM docker.io/denoland/deno:bin-2.7.7 AS deno
+FROM docker.io/denoland/deno:bin-2.7.9 AS deno
 FROM mcr.microsoft.com/devcontainers/typescript-node:24
 COPY --from=deno /deno /usr/local/bin/deno
